@@ -1,6 +1,6 @@
 <template>
     <span>
-        <v-navigation-drawer app v-model="drawer" class="brown lighten-2" disable-resize-watcher >
+        <v-navigation-drawer app v-model="drawer" disable-resize-watcher>
             <v-list nav>
                 <v-list-item-group>
                     <v-list-item
@@ -18,10 +18,10 @@
             </v-list>
         </v-navigation-drawer>
         
-        <v-app-bar app color="brown darken-4" dark>
+        <v-app-bar app class="brown darken-4" dark>
             <v-app-bar-nav-icon class="hidden-md-and-up" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
             <router-link to="/"  style="text-decoration: none; color: inherit;">
-            <v-toolbar-title class="app-title-color">{{appTitle}}</v-toolbar-title>             
+            <v-toolbar-title class="white ">{{appTitle}}</v-toolbar-title>             
             </router-link>
             <v-btn flat class="hidden-sm-and-down" to="/todo"> {{button1}} </v-btn>
             <v-btn flat class="hidden-sm-down" to="/completedtask">{{button2}}</v-btn>
@@ -60,11 +60,3 @@ export default{
 
 };
 </script>
-
-<style scoped>
-.app-title-color{
-    color: indigo lighten-5;
-    font-size: 30px;
-    padding: 10px;
-}
-</style>

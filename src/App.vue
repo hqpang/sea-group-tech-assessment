@@ -18,8 +18,3 @@ export default {
     components: { AppNavigation }
 }
 </script>
-
-
-<style lang="scss">
-
-</style>

@@ -7,6 +7,7 @@
                     <v-form ref="form" v-model="valid">
                         <v-text-field
                         name="email"
+                        prepend-icon="email"
                         label="Email"
                         type="email"
                         v-model="email"
@@ -16,7 +17,8 @@
                         class="sign-in-input-box"  
                         outlined></v-text-field>
                         <v-text-field
-                        name="password" 
+                        name="password"
+                        prepend-icon="lock" 
                         class="sign-in-input-box" 
                         label="Password" 
                         outlined 

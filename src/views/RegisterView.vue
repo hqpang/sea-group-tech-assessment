@@ -7,6 +7,7 @@
                     <v-form ref="form" v-model="valid">
                         <v-text-field
                         name="email"
+                        prepend-icon="email"
                         label="Email"
                         type="email"
                         v-model="email"
@@ -17,7 +18,8 @@
                         outlined></v-text-field>
 
                         <v-text-field
-                        name="password" 
+                        name="password"
+                        prepend-icon="lock" 
                         class="register-input-box" 
                         label="Password" 
                         outlined 
@@ -32,7 +34,8 @@
                         </v-text-field>
 
                         <v-text-field
-                        name="confirmPassword" 
+                        name="confirmPassword"
+                        prepend-icon="lock" 
                         class="register-input-box" 
                         label="Confirm Password" 
                         outlined 
@@ -50,8 +53,8 @@
                             <v-btn 
                             color="primary"
                             :disabled="!valid"
-                            @click="submit"
-                            data-cy="signinSubmitBtn"> Sign Up! </v-btn>
+                            @click="validate"
+                            > Sign Up! </v-btn>
                         </v-card-actions>
                     </v-form>
                 </v-card>
@@ -83,6 +86,24 @@ export default {
             v => /([!@$%])/.test(v) || 'Must have one special character [!@#$%]'
 
             ]
+        }
+    },
+    methods: {
+        validate () {
+            if (this.$refs.form.validate()) {
+            this.snackbar = true
+            this.registerWithFirebase()
+            }
+        },
+        reset () {
+            this.$refs.form.reset()
+        },
+        registerWithFirebase () {
+            const user = {
+            email: this.email,
+            password: this.password
+            }
+            this.$store.dispatch('signUpAction', user)
         }
     }
 }
