@@ -1,11 +1,11 @@
 <template>
-  <v-container>
+  <v-app id="app">
     <AppNavigation></AppNavigation>
-    <v-content>
+    <v-content transition="slide-x-transition">
       <router-view></router-view>
     </v-content>
 
-  </v-container>
+  </v-app>
 
 </template>
 
@@ -18,3 +18,7 @@ export default {
     components: { AppNavigation }
 }
 </script>
+
+<style scoped>
+
+</style>

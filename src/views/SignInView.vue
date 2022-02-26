@@ -1,5 +1,5 @@
 <template>
-    <v-container fill-height >
+    <v-container fluid fill-height class="sign-in-bkgnd">
         <v-layout align-center justify-center>
             <v-col cols="12">
                 <v-card align-center justify-center>
@@ -83,6 +83,8 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style>
+.sign-in-bkgnd {
+    background: url('https://www.pexels.com/photo/white-clouds-2114014/')
+}
 </style>
