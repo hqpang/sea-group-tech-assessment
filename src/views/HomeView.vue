@@ -1,12 +1,13 @@
 <template>
   <div class="home">
-      <SignInView></SignInView>
+    <to-do-view></to-do-view>
   </div>
 </template>
 
 <script>
 
-import SignInView from "./SignInView.vue";
+
+import ToDoView from './ToDoView.vue';
 
 // @ is an alias to /src
 
@@ -15,7 +16,7 @@ export default {
   name: 'HomeView',
   components: {
     
-    SignInView
+    ToDoView
 }
 }
 </script>

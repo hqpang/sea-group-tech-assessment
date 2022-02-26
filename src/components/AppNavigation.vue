@@ -20,7 +20,7 @@
         
         <v-app-bar app  color="light-blue darken-3">
             <v-app-bar-nav-icon class="hidden-md-and-up" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-            <router-link to="/"  style="text-decoration: none; color: inherit;">
+            <router-link to="/"  style="text-decoration: none; color: inherit;" >
             <v-toolbar-title class="white--text">{{appTitle}}</v-toolbar-title>            
             </router-link>
             <v-btn flat class="hidden-sm-and-down white--text" color="light-blue darken-3 " to="/todo"> {{button1}} </v-btn>

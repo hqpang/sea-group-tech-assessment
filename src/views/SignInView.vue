@@ -1,5 +1,5 @@
 <template>
-    <v-container fluid fill-height class="sign-in-bkgnd">
+    <v-container fluid fill-height class="sign-in-bkgnd pa-0">
         <v-layout align-center justify-center>
             <v-col cols="12">
                 <v-card align-center justify-center>
@@ -83,8 +83,12 @@ export default {
 }
 </script>
 
-<style>
-.sign-in-bkgnd {
-    background: url('https://www.pexels.com/photo/white-clouds-2114014/')
+<style lang="scss">
+.container.fill-height>.layout { 
+    background: aliceblue;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    
 }
 </style>
