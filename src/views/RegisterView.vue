@@ -6,6 +6,18 @@
                     <v-card-title>Registration Page</v-card-title>
                     <v-form ref="form" v-model="valid">
                         <v-text-field
+                        name="name"
+                        prepend-icon="mdi-account"
+                        label="Full Name"
+                        type="name"
+                        v-model="name"
+                        :rules="[() => !!name || 'This field is required']"
+                        required
+                        data-cy="registerNameField" 
+                        class="register-input-box"  
+                        outlined></v-text-field>
+
+                        <v-text-field
                         name="email"
                         prepend-icon="email"
                         label="Email"
@@ -71,6 +83,8 @@ export default {
     return {
         passwordShow: false,
         confirmPasswordShow: false,
+        valid: false,
+        name:'',
         email: '',
         password: '',
         emailRules: [
@@ -91,8 +105,8 @@ export default {
     methods: {
         validate () {
             if (this.$refs.form.validate()) {
-            this.snackbar = true
-            this.registerWithFirebase()
+                this.snackbar = true
+                this.registerWithFirebase()
             }
         },
         reset () {
@@ -100,8 +114,9 @@ export default {
         },
         registerWithFirebase () {
             const user = {
-            email: this.email,
-            password: this.password
+                name: this.name,
+                email: this.email,
+                password: this.password
             }
             this.$store.dispatch('signUpAction', user)
         }
