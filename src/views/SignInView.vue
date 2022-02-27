@@ -13,13 +13,11 @@
                         v-model="email"
                         :rules="emailRules"
                         required
-                        data-cy="signinEmailField" 
-                        class="sign-in-input-box"  
+                        data-cy="signinEmailField"  
                         outlined></v-text-field>
                         <v-text-field
                         name="password"
                         prepend-icon="lock" 
-                        class="sign-in-input-box" 
                         label="Password" 
                         outlined 
                         v-model="password" 
