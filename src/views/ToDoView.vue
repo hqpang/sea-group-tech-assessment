@@ -1,5 +1,5 @@
 <template>
-    <v-container>
+    <v-container fluid class="pa-10">
         <v-row>
             <h1>To-DO List</h1>
         </v-row>
@@ -27,7 +27,7 @@ export default {
     name: "ToDoView",
     data: () => {
         return {
-            Username: "Michelle"
+            
         };
     },
     components: { TaskCardView },
@@ -59,5 +59,10 @@ export default {
 </script>
 
 <style scoped>
-
+.container {
+    background: aliceblue;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
 </style>
