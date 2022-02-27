@@ -26,7 +26,10 @@ const routes = [
   {
     path: '/todo',
     name: 'Todo',
-    component: TodoView
+    component: TodoView,
+    meta: {
+      auth: true
+    }
   },
   {
     path: '/register',

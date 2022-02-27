@@ -13,6 +13,7 @@
             <v-row>
                 <router-link to="/signin">Logout</router-link>
                 <v-spacer></v-spacer>
+                <v-btn @click="submitCompleted"> Completed! </v-btn>
                 <v-btn @click="addTask">+ Add New Task</v-btn>
             </v-row>
         </div>
@@ -41,7 +42,16 @@ export default {
                 this.$router.push('/newtask');
             } else {
                 alert('Please Sign In first!')
-                this.$router.push('/sign-in');
+                this.$router.push('/signin');
+            }
+        },
+        submitCompleted() {
+            if(this.isAuthenticated) {
+                // calls for details to be pushed to completed  Task List Tab
+                // Deletes details in To Do List 
+            } else {
+                alert('Please Sign In first!')
+                this.$router.push('/signin');
             }
         }
     }

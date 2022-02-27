@@ -26,7 +26,7 @@
                             <v-btn 
                             color="primary"
                             :disabled="!valid"
-                            @click="submit"
+                            @click="submit(description)"
                             data-cy="AddTaskSubmitBtn"
                             > Add </v-btn>
                         </v-card-actions>
@@ -38,8 +38,6 @@
 </template>
 
 <script>
-// import { getDatabase } from '@firebase/database'
-
 export default {
     name: 'NewTaskView',
     data: () => {
@@ -51,21 +49,12 @@ export default {
     methods: {
         submit() {
             if (this.$refs.form.validate()) {
-                // this.$store.dispatch('addNewTask', {
-                //     description: this.description,
-                // });
-                const db = this.$firebase.firestore();
-
-                db
-                    .collection('tasks').add(
-                        {
-                            info: this.description,
-                            created_at: new Date().getTime()
-                        }
-                )
+                this.$store.dispatch('addNewTask', this.description)
+                } else {
+                    this.$router.push('/sign-in');
+                }
             }
         }
-    }
 
 }
 </script>

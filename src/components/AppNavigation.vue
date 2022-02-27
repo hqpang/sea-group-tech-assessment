@@ -7,7 +7,7 @@
                         v-for="item in items"
                         :key="item.title"
                         dense
-                        router :to="item.url"
+                        router  :to="item.url"
                     >
                         <v-list-item-content>
                             <v-list-title>{{ item.title }}</v-list-title>
@@ -29,11 +29,11 @@
         
         <v-app-bar app  color="light-blue darken-3">
             <v-app-bar-nav-icon class="hidden-md-and-up" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-            <router-link to="/"  style="text-decoration: none; color: inherit;" >
+            <router-link to="/about"  style="text-decoration: none; color: inherit;" >
             <v-toolbar-title class="white--text">{{appTitle}}</v-toolbar-title>            
             </router-link>
-            <v-btn flat class="hidden-sm-and-down white--text" color="light-blue darken-3 " to="/todo"> {{button1}} </v-btn>
-            <v-btn flat class="hidden-sm-and-down white--text" color="light-blue darken-3" to="/completedtask">{{button2}}</v-btn>
+            <v-btn flat class="hidden-sm-and-down white--text" color="light-blue darken-3 " @click="navGoToDo"> {{button1}} </v-btn>
+            <v-btn flat class="hidden-sm-and-down white--text" color="light-blue darken-3" @click="navGoCompleted">{{button2}}</v-btn>
             <v-spacer class="hidden-sm-and-down" ></v-spacer>
             <div v-if="!isAuthenticated" class="hidden-sm-and-down">
                 <v-btn flat class="hidden-sm-and-down white--text" color="light-blue darken-3" to="/signin">{{button3}}</v-btn>
@@ -74,6 +74,23 @@ export default{
     methods: {
         logout() {
             this.$store.dispatch('userSignOut');
+        },
+        navGoToDo(){
+            if(this.isAuthenticated) {
+                this.$router.push('/todo');
+            } else {
+                alert('Please Sign In first!')
+                this.$router.push('/signin');
+            }
+        },
+        navGoCompleted() {
+            if(this.isAuthenticated) {
+                this.$router.push('/completedtask');
+            } else {
+                alert('Please Sign In first!')
+                this.$router.push('/signin');
+            }
+
         }
     }
     

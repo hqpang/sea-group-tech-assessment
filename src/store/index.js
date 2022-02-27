@@ -4,14 +4,15 @@ import router from '@/router'
 // import firebase from 'firebase/compat/app';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 // import 'firebase/compat/firestore';
-import {getDatabase, ref, push, set} from 'firebase/database'
+import {getDatabase, onValue, ref,child} from 'firebase/database'
+// import {getFirestore,re} from 'firebase/firestore'
 
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    tasks: [],
+    userTasks: [],
     user: null,
     isAuthenticated: false,
   },
@@ -21,6 +22,9 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    setUserTasks(state, payload) {
+      state.userTasks = payload;
+    },
     setUser(state, payload) {
       state.user = payload;
     },
@@ -72,13 +76,21 @@ export default new Vuex.Store({
               commit('setIsAuthenticated', false);
               router.push('/');
           });
-      },
-    addNewTask(description) {
+    },
+
+    addNewTask({state} , payload) {
       const db = getDatabase();
-      const TaskListRef = ref(db, 'tasks/');
-      const newTaskRef = push(TaskListRef);
-      set( newTaskRef, {
-        details: description})
+      const taskRef = ref(db, 'users' );
+      const childRef = child(taskRef,  state.user.user.uid)
+      childRef.push(payload.description.label)
+    },
+
+    getUserTask({commit}){
+      const db =getDatabase();
+      const taskRef = ref(db, 'tasks');
+      onValue(taskRef, snapshot => {
+        commit('setUserTasks', snapshot.val());
+      })
     }
   },
   modules: {
