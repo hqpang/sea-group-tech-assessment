@@ -3,7 +3,9 @@ import Vuex from 'vuex'
 import router from '@/router'
 // import firebase from 'firebase/compat/app';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import 'firebase/compat/firestore';
+// import 'firebase/compat/firestore';
+import {getDatabase, ref, push, set} from 'firebase/database'
+
 
 Vue.use(Vuex)
 
@@ -71,6 +73,13 @@ export default new Vuex.Store({
               router.push('/');
           });
       },
+    addNewTask(description) {
+      const db = getDatabase();
+      const TaskListRef = ref(db, 'tasks/');
+      const newTaskRef = push(TaskListRef);
+      set( newTaskRef, {
+        details: description})
+    }
   },
   modules: {
   }

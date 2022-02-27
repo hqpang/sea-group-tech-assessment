@@ -1,9 +1,7 @@
 <template>
     <v-container>
         <v-row>
-            <h1>All To-DO</h1>
-            <v-spacer></v-spacer>
-            <v-btn to="/userprofile">{{Username}}</v-btn>
+            <h1>To-DO List</h1>
         </v-row>
         <div>
             <v-col cols="20">
@@ -15,7 +13,7 @@
             <v-row>
                 <router-link to="/signin">Logout</router-link>
                 <v-spacer></v-spacer>
-                <v-btn to="/newtask">+ Add New Task</v-btn>
+                <v-btn @click="addTask">+ Add New Task</v-btn>
             </v-row>
         </div>
     </v-container>
@@ -31,7 +29,22 @@ export default {
             Username: "Michelle"
         };
     },
-    components: { TaskCardView }
+    components: { TaskCardView },
+    computed: {
+        isAuthenticated(){
+            return this.$store.getters.isAuthenticated;
+        }
+    },
+    methods: {
+        addTask() {
+            if(this.isAuthenticated) {
+                this.$router.push('/newtask');
+            } else {
+                alert('Please Sign In first!')
+                this.$router.push('/sign-in');
+            }
+        }
+    }
 }
 </script>
 
