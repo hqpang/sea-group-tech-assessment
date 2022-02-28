@@ -1,15 +1,13 @@
 <template>
     <v-container>
         <v-flex>
-            <div v-if="!isCompleted">
-                <v-card class="ma-5" :elevation="4" data-cy="tasks" v-for="item in items" :key="item.description" outlined>
-                    <v-row no-gutters>
-                        <v-checkbox></v-checkbox>
-                        <v-file-input label="Attach" truncate-length="10"></v-file-input>
-                        <v-card-text>Details: {{item.description}}</v-card-text>
-                    </v-row>
-                </v-card>
-            </div>
+            <v-card class="ma-5" :elevation="4" data-cy="tasks" v-for="item in items" :key="item.description" outlined>
+                <v-row no-gutters>
+                    <v-checkbox></v-checkbox>
+                    <v-file-input label="Attach" truncate-length="10"></v-file-input>
+                    <v-card-text>Details: {{item.description}}</v-card-text>
+                </v-row>
+            </v-card>
         </v-flex>
 
     </v-container>
