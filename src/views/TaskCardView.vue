@@ -1,6 +1,7 @@
 <template>
     <v-container>
-        <v-flex >
+        <v-flex>
+            <div v-if="!isCompleted">
                 <v-card class="ma-5" :elevation="4" data-cy="tasks" v-for="item in items" :key="item.description" outlined>
                     <v-row no-gutters>
                         <v-checkbox></v-checkbox>
@@ -8,12 +9,14 @@
                         <v-card-text>Details: {{item.description}}</v-card-text>
                     </v-row>
                 </v-card>
+            </div>
         </v-flex>
 
     </v-container>
 </template>
 
 <script>
+
 
 export default {
     name: 'TaskCardView',
@@ -32,7 +35,7 @@ export default {
         },
         isAuthenticated (){
             return this.$store.getters.isAuthenticated;
-        }
+        },
     },
     mounted() {
         this.getTasks();

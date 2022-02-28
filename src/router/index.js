@@ -6,6 +6,7 @@ import Register from '../views/RegisterView.vue'
 import UserProfileView from '../views/UserProfileView.vue'
 import SignInView from '../views/SignInView'
 import NewTaskView from '../views/NewTaskView.vue'
+import CompletedView from '../views/CompletedView.vue'
 
 Vue.use(VueRouter)
 
@@ -50,6 +51,11 @@ const routes = [
     path: '/newtask',
     name: 'NewTask',
     component: NewTaskView
+  },
+  {
+    path: '/completedtask',
+    name: 'CompletedTask',
+    component: CompletedView
   }
 ]
 
