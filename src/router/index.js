@@ -7,6 +7,7 @@ import UserProfileView from '../views/UserProfileView.vue'
 import SignInView from '../views/SignInView'
 import NewTaskView from '../views/NewTaskView.vue'
 import CompletedView from '../views/CompletedView.vue'
+import CompletedTaskCardView from '../views/CompletedTaskCardView.vue'
 
 Vue.use(VueRouter)
 
@@ -56,6 +57,11 @@ const routes = [
     path: '/completedtask',
     name: 'CompletedTask',
     component: CompletedView
+  },
+  {
+    path: '/completetaskcard',
+    name: 'CompletedTaskCard',
+    component: CompletedTaskCardView
   }
 ]
 

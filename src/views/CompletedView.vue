@@ -5,7 +5,7 @@
         </v-row>
         <div>
             <v-col cols="20">
-                <TaskCardView></TaskCardView>
+                <completed-task-card-view></completed-task-card-view>
             </v-col>
         </div>
 
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import TaskCardView from "./TaskCardView.vue";
+import CompletedTaskCardView from './CompletedTaskCardView.vue';
 
 export default {
     name: "CompletedView",
@@ -23,7 +23,7 @@ export default {
             
         };
     },
-    components: { TaskCardView },
+    components: {  CompletedTaskCardView },
     computed: {
         isAuthenticated(){
             return this.$store.getters.isAuthenticated;
